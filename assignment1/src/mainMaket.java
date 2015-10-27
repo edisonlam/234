@@ -35,7 +35,7 @@ public class mainMaket {
 		
 		//next, add that transaction to a portfolio, which you created in main
 		
-		buyAStock();
+//		buyAStock();
 	}
 	
 	private static Transaction makeTransactionFromStock(Stock s)
@@ -46,6 +46,8 @@ public class mainMaket {
 	private static Stock searchForStockWithString(String l,ArrayList<Stock> index) 
 	{
 		for(Stock s : index)
+		{
+			do
 			{
 				if(l.equalsIgnoreCase(s.getSymbol()))
 				{
@@ -66,8 +68,8 @@ public class mainMaket {
 						if(t.numberBought > 0)
 						{
 							System.out.println("you bought " + t.numberBought +
-								" shares at the price of " +t.stockPrice +
-								" per share for stock symbol " +t.symbolName);
+									" shares at the price of " +t.stockPrice +
+									" per share for stock symbol " +t.symbolName);
 							Porfolio p = new Porfolio();
 							p.addStockToPortfolio(t);
 							p.printPortfolio();
@@ -83,25 +85,16 @@ public class mainMaket {
 					}
 					System.out.println("would you like to buy more stocks?");
 					String b = sc.next();
-					{
-						if(b.equalsIgnoreCase("yes"))
-						{
-							System.out.println("input the symbol of a stock to research: ");
-							String symbolName = sc.next();
-						}
-						else
-						{
-							System.out.println("thank you for your time");
-						}
-					}
 				}
 			}
+			while (b.equalsIgnoreCase("yes"));
+		}
 		return null;
 	}
 
-	private static void buyAStock() {
-		
-	}
+//	private static void buyAStock() {
+//		
+//	}
 
 //	private static void searchForStock(String l, ArrayList<Stock> index) 
 //	{
@@ -132,8 +125,8 @@ public class mainMaket {
 	{ 
 		@SuppressWarnings("resource")
 		Scanner sc = new Scanner(System.in);//get user input from the console
-		String ui = sc.next(); //refers to what the user types, traps the user input in ui, var
-		System.out.println("variable ui is now " + ui);
+		//String ui = sc.next(); //refers to what the user types, traps the user input in ui, var
+		//System.out.println("variable ui is now " + ui);
 		
 		System.out.println("input the symbol of a stock to research: ");
 		String symbolName = sc.next();
