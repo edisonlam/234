@@ -18,7 +18,9 @@ public class mainMaket {
 	{
 		Market m = new Market();//create the market right away
 		
-		Agent a = new Agent(); //buyer/sellers/traders
+//		Agent a = new Agent(); //buyer/sellers/traders
+		
+		Porfolio p = new Porfolio();
 		
 		String l = provideTUI();
 							//this gives us 2 things, the market and a stock to look for
@@ -29,59 +31,53 @@ public class mainMaket {
 		//then, ask if they wish to buy the stock
 		
 		//if so, make a transaction from that stock:
-		Porfolio p = new Porfolio();
-		Transaction t = makeTransactionFromStock(s, p.getPortfolio());
+		Transaction t = makeTransactionFromStock(s);
 		
 		//next, add that transaction to a portfolio, which you created in main
 		
-		
-		
-		
-		buyAStock();
+		//buyAStock();
 	}
 	
-	private static Transaction makeTransactionFromStock(Stock s,ArrayList<Transaction> portfolio) 
+	private static Transaction makeTransactionFromStock(Stock s)
 	{
-		for(Transaction t : portfolio)
+		Scanner sc = new Scanner(System.in);
+		String a = sc.next();
+		if(a.equalsIgnoreCase("yes"))
 		{
-			Scanner sc = new Scanner(System.in);
-			String a = sc.next();
-			if(a.equalsIgnoreCase("yes"))
+			Transaction t = new Transaction();
+			t.symbolName = s.getSymbol();
+			t.stockPrice = s.getPrice();
+			System.out.println("how many shares do you wish to buy?");
+			t.numberBought = sc.nextInt();
+			if(t.numberBought > 0)
 			{
-				t.symbolName = s.getSymbol();
-				t.stockPrice = s.getPrice();
-				System.out.println("how many shares do you wish to buy?");
-				t.numberBought = sc.nextInt();
-				if(t.numberBought > 0)
-				{
-					System.out.println("you bought " + t.numberBought +
-						" shares at the price of " +t.stockPrice +
-						" per share for stock symbol " +t.symbolName);
-					Porfolio p = new Porfolio();
-					p.addStockToPortfolio(t);
-					p.printPortfolio();
-				}
-				else if(t.numberBought <= 0)
-				{
-					System.out.println("sorry you cannot buy that many shares");
-				}
+				System.out.println("you bought " + t.numberBought +
+					" shares at the price of " +t.stockPrice +
+					" per share for stock symbol " +t.symbolName);
+				Porfolio p = new Porfolio();
+				p.addStockToPortfolio(t);
+				p.printPortfolio();
+			}
+			else if(t.numberBought <= 0)
+			{
+				System.out.println("sorry you cannot buy that many shares");
+			}
+		}
+		else
+		{
+			System.out.println("thank you for your time");
+		}
+		System.out.println("would you like to buy more stocks?");
+		String b = sc.next();
+		{
+			if(b.equalsIgnoreCase("yes"))
+			{
+				System.out.println("input the symbol of a stock to research: ");
+				String symbolName = sc.next();
 			}
 			else
 			{
 				System.out.println("thank you for your time");
-			}
-			System.out.println("would you like to buy more stocks?");
-			String b = sc.next();
-			{
-				if(b.equalsIgnoreCase("yes"))
-				{
-					System.out.println("input the symbol of a stock to research: ");
-					String symbolName = sc.next();
-				}
-				else
-				{
-					System.out.println("thank you for your time");
-				}
 			}
 		}
 		return null;
@@ -98,16 +94,14 @@ public class mainMaket {
 							" last sold at price: " +s.getPrice() + 
 							" buy Volume: " + s.getIpoQty() );
 					System.out.println("would you like to buy this stock?");
-					Scanner sc = new Scanner(System.in);
-					String a = sc.next();
 				}
 			}
 		return null;
 	}
 
-	private static void buyAStock() {
-		
-	}
+//	private static void buyAStock() {
+//		
+//	}
 
 //	private static void searchForStock(String l, ArrayList<Stock> index) 
 //	{

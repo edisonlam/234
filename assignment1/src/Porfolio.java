@@ -36,5 +36,9 @@ public class Porfolio {
 		// TODO Auto-generated method stub
 		return portfolio;
 	}
+	
+	public void setPortfolio(ArrayList<Transaction> portfolio) {
+		this.portfolio = portfolio;
+	}
 
 }
