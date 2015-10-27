@@ -8,10 +8,9 @@ public class Porfolio {
 	 * 
 	 * RECORD OF PURCHASES OF STOCK
 	 */
-	public Porfolio() {
-
-	
-	
+	public Porfolio() 
+	{
+		printPortfolio();
 	}
 	
 	public void addStockToPortfolio(Transaction t)

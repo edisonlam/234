@@ -14,7 +14,6 @@ public class Transaction {
 	public Transaction() 
 	{
 		
-		
 	}
 
 	public String symbolName() {

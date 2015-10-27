@@ -34,8 +34,6 @@ public class mainMaket {
 		
 		//next, add that transaction to a portfolio, which you created in main
 		Porfolio p = new Porfolio();
-		p.addStockToPortfolio(t);
-		p.printPortfolio();
 		
 		
 		
@@ -82,6 +80,19 @@ public class mainMaket {
 							{
 								System.out.println("sorry you cannot buy that many shares");
 							}
+						}
+						else
+						{
+							System.out.println("thank you for your time");
+						}
+					}
+					System.out.println("would you like to buy more stocks?");
+					String b = sc.next();
+					{
+						if(b.equalsIgnoreCase("yes"))
+						{
+							System.out.println("input the symbol of a stock to research: ");
+							String symbolName = sc.next();
 						}
 						else
 						{
