@@ -28,8 +28,13 @@ public class Porfolio {
 		{
 			System.out.println("stock symbol: " + t.symbolName() + 
 					", price per share: "+ t.stockPrice() +
-					", amount: " + t.numberBought());
+					", amount purchased: " + t.numberBought());
 		}
+	}
+
+	public ArrayList<Transaction> getPortfolio() {
+		// TODO Auto-generated method stub
+		return portfolio;
 	}
 
 }

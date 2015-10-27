@@ -29,11 +29,10 @@ public class mainMaket {
 		//then, ask if they wish to buy the stock
 		
 		//if so, make a transaction from that stock:
-		
-		Transaction t = makeTransactionFromStock(s);
+		Porfolio p = new Porfolio();
+		Transaction t = makeTransactionFromStock(s, p.getPortfolio());
 		
 		//next, add that transaction to a portfolio, which you created in main
-		Porfolio p = new Porfolio();
 		
 		
 		
@@ -41,8 +40,50 @@ public class mainMaket {
 		buyAStock();
 	}
 	
-	private static Transaction makeTransactionFromStock(Stock s) 
+	private static Transaction makeTransactionFromStock(Stock s,ArrayList<Transaction> portfolio) 
 	{
+		for(Transaction t : portfolio)
+		{
+			Scanner sc = new Scanner(System.in);
+			String a = sc.next();
+			if(a.equalsIgnoreCase("yes"))
+			{
+				t.symbolName = s.getSymbol();
+				t.stockPrice = s.getPrice();
+				System.out.println("how many shares do you wish to buy?");
+				t.numberBought = sc.nextInt();
+				if(t.numberBought > 0)
+				{
+					System.out.println("you bought " + t.numberBought +
+						" shares at the price of " +t.stockPrice +
+						" per share for stock symbol " +t.symbolName);
+					Porfolio p = new Porfolio();
+					p.addStockToPortfolio(t);
+					p.printPortfolio();
+				}
+				else if(t.numberBought <= 0)
+				{
+					System.out.println("sorry you cannot buy that many shares");
+				}
+			}
+			else
+			{
+				System.out.println("thank you for your time");
+			}
+			System.out.println("would you like to buy more stocks?");
+			String b = sc.next();
+			{
+				if(b.equalsIgnoreCase("yes"))
+				{
+					System.out.println("input the symbol of a stock to research: ");
+					String symbolName = sc.next();
+				}
+				else
+				{
+					System.out.println("thank you for your time");
+				}
+			}
+		}
 		return null;
 	}
 
@@ -59,46 +100,6 @@ public class mainMaket {
 					System.out.println("would you like to buy this stock?");
 					Scanner sc = new Scanner(System.in);
 					String a = sc.next();
-					{
-						if(a.equalsIgnoreCase("yes"))
-						{
-							Transaction t = new Transaction();
-							t.symbolName = s.getSymbol();
-							t.stockPrice = s.getPrice();
-							System.out.println("how many shares do you wish to buy?");
-							t.numberBought = sc.nextInt();
-							if(t.numberBought > 0)
-							{
-								System.out.println("you bought " + t.numberBought +
-									" shares at the price of " +t.stockPrice +
-									" per share for stock symbol " +t.symbolName);
-								Porfolio p = new Porfolio();
-								p.addStockToPortfolio(t);
-								p.printPortfolio();
-							}
-							else if(t.numberBought <= 0)
-							{
-								System.out.println("sorry you cannot buy that many shares");
-							}
-						}
-						else
-						{
-							System.out.println("thank you for your time");
-						}
-					}
-					System.out.println("would you like to buy more stocks?");
-					String b = sc.next();
-					{
-						if(b.equalsIgnoreCase("yes"))
-						{
-							System.out.println("input the symbol of a stock to research: ");
-							String symbolName = sc.next();
-						}
-						else
-						{
-							System.out.println("thank you for your time");
-						}
-					}
 				}
 			}
 		return null;
