@@ -25,7 +25,12 @@ public class Porfolio {
 	 */
 	public void printPortfolio()
 	{
-		
+		for(Transaction t : portfolio)//exemplifies how to iterate an array of objects successfully
+		{
+			System.out.println("stock symbol: " + t.symbolName() + 
+					", price per share: "+ t.stockPrice() +
+					", amount: " + t.numberBought());
+		}
 	}
 
 }

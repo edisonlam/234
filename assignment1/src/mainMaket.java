@@ -30,7 +30,7 @@ public class mainMaket {
 		
 		//if so, make a transaction from that stock:
 		
-		Transaction t = makeTransactionFromStock(s, l);
+		Transaction t = makeTransactionFromStock(s);
 		
 		//next, add that transaction to a portfolio, which you created in main
 		Porfolio p = new Porfolio();
@@ -43,7 +43,7 @@ public class mainMaket {
 		buyAStock();
 	}
 	
-	private static Transaction makeTransactionFromStock(Stock s, String a) 
+	private static Transaction makeTransactionFromStock(Stock s) 
 	{
 		return null;
 	}
@@ -69,6 +69,19 @@ public class mainMaket {
 							t.stockPrice = s.getPrice();
 							System.out.println("how many shares do you wish to buy?");
 							t.numberBought = sc.nextInt();
+							if(t.numberBought > 0)
+							{
+								System.out.println("you bought " + t.numberBought +
+									" shares at the price of " +t.stockPrice +
+									" per share for stock symbol " +t.symbolName);
+								Porfolio p = new Porfolio();
+								p.addStockToPortfolio(t);
+								p.printPortfolio();
+							}
+							else if(t.numberBought <= 0)
+							{
+								System.out.println("sorry you cannot buy that many shares");
+							}
 						}
 						else
 						{
