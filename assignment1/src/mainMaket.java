@@ -47,6 +47,7 @@ public class mainMaket {
 	{
 		for(Stock s : index)
 		{
+			String b;
 			do
 			{
 				if(l.equalsIgnoreCase(s.getSymbol()))
@@ -83,9 +84,11 @@ public class mainMaket {
 					{
 						System.out.println("thank you for your time");
 					}
-					System.out.println("would you like to buy more stocks?");
-					String b = sc.next();
+
 				}
+				System.out.println("would you like to buy more stocks?");
+				Scanner sc = new Scanner(System.in);
+				b = sc.next();
 			}
 			while (b.equalsIgnoreCase("yes"));
 		}
