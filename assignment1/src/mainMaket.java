@@ -20,32 +20,32 @@ public class mainMaket {
 		
 //		Agent a = new Agent(); //buyer/sellers/traders
 		
-		Porfolio p = new Porfolio();
-		
 //		String l = provideTUI();
 							//this gives us 2 things, the market and a stock to look for
 		
 		//first, search for a stock by supplying a string (give a string, get a stock)
 		Stock s = searchForStockWithString(m.getIndex());
+	}
 		
 		//then, ask if they wish to buy the stock
 		
 		//if so, make a transaction from that stock:
-		Transaction t = makeTransactionFromStock(s);
+//		Transaction t = makeTransactionFromStock(s);
 		
 		//next, add that transaction to a portfolio, which you created in main
 		
 //		buyAStock();
-	}
+//	}
 	
-	private static Transaction makeTransactionFromStock(Stock s)
-	{
-		return null;
-	}
+//	private static Transaction makeTransactionFromStock(Stock s)
+//	{
+//		return null;
+//	}
 
 	private static Stock searchForStockWithString(ArrayList<Stock> index) 
 	{
 		String b = "";
+		Porfolio p = new Porfolio();
 		do
 		{
 			System.out.println("input the symbol of a stock to research: ");
@@ -73,7 +73,6 @@ public class mainMaket {
 							System.out.println("you bought " + t.numberBought +
 									" shares at the price of " +t.stockPrice +
 									" per share for stock symbol " +t.symbolName);
-							Porfolio p = new Porfolio();
 							p.addStockToPortfolio(t);
 							p.printPortfolio();
 						}
