@@ -22,11 +22,11 @@ public class mainMaket {
 		
 		Porfolio p = new Porfolio();
 		
-		String l = provideTUI();
+//		String l = provideTUI();
 							//this gives us 2 things, the market and a stock to look for
 		
 		//first, search for a stock by supplying a string (give a string, get a stock)
-		Stock s = searchForStockWithString(l, m.getIndex());
+		Stock s = searchForStockWithString(m.getIndex());
 		
 		//then, ask if they wish to buy the stock
 		
@@ -43,21 +43,23 @@ public class mainMaket {
 		return null;
 	}
 
-	private static Stock searchForStockWithString(String l,ArrayList<Stock> index) 
+	private static Stock searchForStockWithString(ArrayList<Stock> index) 
 	{
-		for(Stock s : index)
+		String b = "";
+		do
 		{
-			String b;
-			do
+			System.out.println("input the symbol of a stock to research: ");
+			Scanner sc = new Scanner(System.in);
+			String symbolName = sc.next();
+			for(Stock s : index)
 			{
-				if(l.equalsIgnoreCase(s.getSymbol()))
+				if(symbolName.equalsIgnoreCase(s.getSymbol()))
 				{
 					System.out.println("bingo, I just found the stock I need..."); //worked!
 					System.out.println("stock symbol: " +s.getSymbol() +
 							" last sold at price: " +s.getPrice() + 
 							" buy Volume: " + s.getIpoQty() );
 					System.out.println("would you like to buy this stock?");
-					Scanner sc = new Scanner(System.in);
 					String a = sc.next();
 					if(a.equalsIgnoreCase("yes"))
 					{
@@ -84,16 +86,15 @@ public class mainMaket {
 					{
 						System.out.println("thank you for your time");
 					}
-
+					System.out.println("would you like to buy more stocks?");
+					b = sc.next();
 				}
-				System.out.println("would you like to buy more stocks?");
-				Scanner sc = new Scanner(System.in);
-				b = sc.next();
 			}
-			while (b.equalsIgnoreCase("yes"));
 		}
+		while (b.equalsIgnoreCase("yes"));
 		return null;
 	}
+}
 
 //	private static void buyAStock() {
 //		
@@ -124,19 +125,19 @@ public class mainMaket {
 //		}
 //	}
 
-	public static String provideTUI()
-	{ 
-		@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);//get user input from the console
-		//String ui = sc.next(); //refers to what the user types, traps the user input in ui, var
-		//System.out.println("variable ui is now " + ui);
-		
-		System.out.println("input the symbol of a stock to research: ");
-		String symbolName = sc.next();
-											//ONCE I GET USER IN PUT, I CAN LOOK AT EACH STOCK 
-											// IN OUR INDEX, AND STUDY EACH STOCK'S SYMBOL
-											// FOR EQUALITY TO THE USER INPUT
-		//compareInputToStocksInMyIndex(symbolName); //initiate the search for stocks of that name
-		return symbolName; 
-	}
-}
+//	public static String provideTUI()
+//	{ 
+//		@SuppressWarnings("resource")
+//		Scanner sc = new Scanner(System.in);//get user input from the console
+//		//String ui = sc.next(); //refers to what the user types, traps the user input in ui, var
+//		//System.out.println("variable ui is now " + ui);
+//		
+////		System.out.println("input the symbol of a stock to research: ");
+////		String symbolName = sc.next();
+//											//ONCE I GET USER IN PUT, I CAN LOOK AT EACH STOCK 
+//											// IN OUR INDEX, AND STUDY EACH STOCK'S SYMBOL
+//											// FOR EQUALITY TO THE USER INPUT
+//		//compareInputToStocksInMyIndex(symbolName); //initiate the search for stocks of that name
+////		return symbolName; 
+//	}
+//}
