@@ -15,7 +15,7 @@ public class mainMarket {
 //	private static Stock searchForStockWithString(ArrayList<Stock> index) 
 //	{
 //		String b = "";
-//		Porfolio p = new Porfolio();
+//		Portfolio p = new Portfolio();
 //		do
 //		{
 //			System.out.println("input the symbol of a stock to research: ");

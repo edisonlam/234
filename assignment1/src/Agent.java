@@ -29,12 +29,17 @@ public class Agent {
 	public Agent() 
 	{
 		initializeAllInvestorInSimulation();
+		initializeAllTransactions();
 		printTheList();
 	}
 	
-	private void initializeAllInvestorInSimulation() 
+	private void initializeAllTransactions() 
 	{
 		
+	}
+
+	private void initializeAllInvestorInSimulation() 
+	{
 		for(int i = 0 ; i <= 10000; i++)
 		{
 			Investor a = new Investor();
