@@ -6,6 +6,8 @@ public class Transaction {
 	public double stockPrice;
 	
 	public int numberBought;
+
+	public String agentID;
 	
 	public Transaction() 
 	{

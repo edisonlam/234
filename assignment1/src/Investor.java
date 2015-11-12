@@ -23,7 +23,7 @@ public class Investor {
 
 	private double setUpRandomBudget() {
 		Random r = new Random();
-		double budget = r.nextDouble() * 10000.00;
+		double budget = r.nextDouble() * 1000.00;
 		return budget;
 	}
 	

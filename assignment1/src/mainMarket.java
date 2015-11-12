@@ -1,16 +1,60 @@
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Random;
 
 public class mainMarket {
-	
+
 	public static void main(String[] args) 
 	{
 		Market m = new Market();
 		
 		Agent a = new Agent();
+
+		Stock s = initializeAllTransactions(m.getIndex(), a.getList());
 		
 //		Stock s = searchForStockWithString(m.getIndex());
 	}
+	
+	private static Stock initializeAllTransactions(ArrayList<Stock> index, ArrayList<Investor> list) 
+	{
+		Random r = new Random();
+		for(Investor a : list)
+		{
+			Portfolio p = new Portfolio();
+			do
+			{
+				Stock x = index.get(r.nextInt(index.size()));
+				Transaction t = new Transaction();
+				History h = new History();
+				t.symbolName = x.getSymbol();
+				h.symbolName = x.getSymbol();
+				t.stockPrice = x.getPrice();
+				h.salePrice = x.getPrice();
+				int n = r.nextInt(1000) + 1;
+				t.numberBought = n;
+				h.lastSaleVolume = n;
+				t.agentID = a.getAgentID();
+				double budgetCheck = (a.getBudget() - (n*t.stockPrice));
+				if(budgetCheck <=0)
+				{
+					continue;
+				}
+				else
+				{
+					x.setIpoQty(x.getIpoQty() - n);
+					x.setPrice(x.getPrice() + (r.nextDouble()));
+					h.newPrice = x.getPrice();
+					a.setBudget(a.getBudget() - (n*t.stockPrice));
+					p.addStockToPortfolio(t);
+					x.addPriceHistory(h);
+				}
+//				x.printHistory();
+			}
+			while(a.getBudget() >= 10);
+			p.printPortfolio();
+		}
+		return null;
+	}
+}
 
 //	private static Stock searchForStockWithString(ArrayList<Stock> index) 
 //	{
@@ -63,4 +107,3 @@ public class mainMarket {
 //		while (b.equalsIgnoreCase("yes"));
 //		return null;
 //	}
-}

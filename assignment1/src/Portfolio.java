@@ -1,3 +1,4 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 
@@ -16,10 +17,11 @@ public class Portfolio {
 	
 	public void printPortfolio()
 	{
+		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(Transaction t : portfolio)
 		{
-			System.out.println("Stock Symbol: " + t.symbolName() + 
-					", Price Per Share: "+ t.stockPrice() +
+			System.out.println("Agent ID: " + t.agentID + ", Stock Symbol: " + t.symbolName() + 
+					", Price Per Share: "+ defaultFormat.format(t.stockPrice()) +
 					", Amount Purchased: " + t.numberBought());
 		}
 	}

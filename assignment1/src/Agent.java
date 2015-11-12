@@ -9,14 +9,20 @@ public class Agent {
 		list.add(investor);
 	}
 	
-	public void printTheList()
+	public Agent() 
 	{
-		for(Investor a : list)
-		{
-			System.out.println("Agent ID: " + a.getAgentID() + 
-					", Budget: "+ a.getBudget());
-		}
+		initializeAllInvestorInSimulation();
+//		printTheList();
 	}
+	
+//	public void printTheList()
+//	{
+//		for(Investor a : list)
+//		{
+//			System.out.println("Agent ID: " + a.getAgentID() + 
+//					", Budget: "+ a.getBudget());
+//		}
+//	}
 	
 	public ArrayList<Investor> getList() {
 		return list;
@@ -24,18 +30,6 @@ public class Agent {
 	
 	public void setList(ArrayList<Investor> list) {
 		this.list = list;
-	}
-	
-	public Agent() 
-	{
-		initializeAllInvestorInSimulation();
-		initializeAllTransactions();
-		printTheList();
-	}
-	
-	private void initializeAllTransactions() 
-	{
-		
 	}
 
 	private void initializeAllInvestorInSimulation() 

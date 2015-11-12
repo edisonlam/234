@@ -1,11 +1,13 @@
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Stock {
-	private double lastSalePrice; 
 	private double price; 
 	private String symbol = "";
-	private int ipoQty;
-	private double lastSaleVolume; 
+	private int ipoQty; 
+	
+	private ArrayList<History> history = new ArrayList<History>();
 	
 	public Stock() 
 	{	
@@ -16,6 +18,33 @@ public class Stock {
 		
 		int l = setRandomIPOQTY();
 		setIpoQty(l);
+		
+		printHistory();
+	}
+	
+	public void addPriceHistory(History h)
+	{
+		history.add(h);
+	}
+	
+	public void printHistory()
+	{
+		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
+		for(History h : history)
+		{
+			System.out.println("Stock Symbol: " + h.symbolName() + 
+					", Price Per Share: "+ defaultFormat.format(h.salePrice()) +
+					", Amount Sold: " + h.lastSaleVolume() +
+					", Price Increased By: " + defaultFormat.format((h.salePrice() - h.newPrice()) * -1));
+		}
+	}
+	
+	public ArrayList<History> getHistory() {
+		return history;
+	}
+	
+	public void setHistory(ArrayList<History> history) {
+		this.history = history;
 	}
 
 	private int setRandomIPOQTY() 
@@ -33,7 +62,7 @@ public class Stock {
 	private double setUpRandomPrice() 
 	{
 		Random r = new Random();
-		double price = r.nextDouble() * 10.0;
+		double price = r.nextDouble() * 10.00 + 0.01;
 		return price;
 	}
 
@@ -157,14 +186,6 @@ public class Stock {
 		return l;
 	}
 
-	public double getLastSalePrice() {
-		return lastSalePrice;
-	}
-
-	public void setLastSalePrice(double lastSalePrice) {
-		this.lastSalePrice = lastSalePrice;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -188,13 +209,5 @@ public class Stock {
 
 	public void setIpoQty(int ipoQty) {
 		this.ipoQty = ipoQty;
-	}
-
-	public double getLastSaleVolume() {
-		return lastSaleVolume;
-	}
-
-	public void setLastSaleVolume(double lastSaleVolume) {
-		this.lastSaleVolume = lastSaleVolume;
 	}
 }
