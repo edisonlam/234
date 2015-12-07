@@ -7,7 +7,7 @@ public class Stock {
 	private String symbol = "";
 	private int ipoQty; 
 	
-	private ArrayList<History> history = new ArrayList<History>();
+	static ArrayList<History> history = new ArrayList<History>();
 	
 	public Stock() 
 	{	
@@ -25,19 +25,20 @@ public class Stock {
 		history.add(h);
 	}
 	
-	public void printHistory()
+	public static void printHistory(ArrayList<Stock> index)
 	{
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
-		for(History h : history)
+		for(Stock s : index)
 		{
-			String x = h.symbolName;
-			System.out.println("Stock Symbol: " + h.symbolName());
-			for(History j : history)
+			String x = s.getSymbol();
+			System.out.println("Stock Symbol: " + s.getSymbol());
+			for(History h : history)
 			{
 				if(x.equals(h.symbolName))
-					System.out.println("Price Per Share: "+ defaultFormat.format(j.salePrice()) +
-							", Amount Sold: " + j.lastSaleVolume() +
-							", Price Increased By: " + defaultFormat.format((j.salePrice() - j.newPrice()) * -1));
+					System.out.println("Purchased by Agent ID: " + h.agentID() +
+							", Price Per Share: " + defaultFormat.format(h.salePrice()) +
+							", Amount Sold: " + h.lastSaleVolume() +
+							", Price Increased By: " + defaultFormat.format((h.salePrice() - h.newPrice()) * -1));
 			}
 			System.out.println("");
 		}

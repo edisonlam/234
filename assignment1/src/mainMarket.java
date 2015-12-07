@@ -1,22 +1,22 @@
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class mainMarket {
 
 	public static void main(String[] args) 
 	{
 		Market m = new Market();
-		
-		Agent a = new Agent();
-		
-		Portfolio p = new Portfolio();
 
-		Stock s = initializeAllTransactions(m.getIndex(), a.getList(), p.getPortfolio());
-		
+		Agent a = new Agent();
+
+		Stock s = initializeAllTransactions(m.getIndex(), a.getList());
+
 //		Stock s = searchForStockWithString(m.getIndex());
 	}
-	
-	private static Stock initializeAllTransactions(ArrayList<Stock> index, ArrayList<Investor> list, ArrayList<Transaction> portfolio) 
+
+	private static Stock initializeAllTransactions(ArrayList<Stock> index, ArrayList<Investor> list) 
 	{
 		Random r = new Random();
 		for(Investor a : list)
@@ -26,22 +26,28 @@ public class mainMarket {
 			{
 				Stock x = index.get(r.nextInt(index.size()));
 				Transaction t = new Transaction();
-				History h = new History();
 				t.symbolName = x.getSymbol();
-				h.symbolName = x.getSymbol();
 				t.stockPrice = x.getPrice();
-				h.salePrice = x.getPrice();
-				int n = r.nextInt(1000) + 1;
+				int n = r.nextInt(10000) + 1;
 				t.numberBought = n;
-				h.lastSaleVolume = n;
 				t.agentID = a.getAgentID();
 				double budgetCheck = (a.getBudget() - (n*t.stockPrice));
+				int qtyCheck = (x.getIpoQty() - n);
 				if(budgetCheck <=0)
+				{
+					continue;
+				}
+				else if(qtyCheck <=0)
 				{
 					continue;
 				}
 				else
 				{
+					History h = new History();
+					h.symbolName = x.getSymbol();
+					h.salePrice = x.getPrice();
+					h.lastSaleVolume = n;
+					h.agentID = a.getAgentID();
 					x.setIpoQty(x.getIpoQty() - n);
 					x.setPrice(x.getPrice() + (r.nextDouble()));
 					h.newPrice = x.getPrice();
@@ -49,10 +55,23 @@ public class mainMarket {
 					p.addStockToPortfolio(t);
 					x.addPriceHistory(h);
 				}
-//				x.printHistory();
 			}
-			while(a.getBudget() >= 1000);
-			p.printPortfolio(list, portfolio);
+			while(a.getBudget() >= 5000);
+		}
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Would you like to print the -Portfolio- or the -History-?");
+		String a = sc.next();
+		if(a.equalsIgnoreCase("Portfolio"))
+		{
+			Portfolio.printPortfolio(list);
+		}
+		else if(a.equalsIgnoreCase("History"))
+		{
+			Stock.printHistory(index);
+		}
+		else
+		{
+			System.out.println("Goodbye");
 		}
 		return null;
 	}

@@ -9,6 +9,8 @@ public class History {
 
 	public double newPrice; 
 	
+	public String agentID;
+	
 	public History() 
 	{
 		
@@ -28,5 +30,9 @@ public class History {
 	
 	public double newPrice() {
 		return newPrice;
+	}
+	
+	public String agentID() {
+		return agentID;
 	}
 }

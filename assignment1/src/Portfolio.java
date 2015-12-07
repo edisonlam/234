@@ -2,11 +2,11 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Portfolio {
-	ArrayList<Transaction> portfolio = new ArrayList<Transaction>();
+	static ArrayList<Transaction> portfolio = new ArrayList<Transaction>();
 
 	public Portfolio() 
 	{
-		
+
 	}
 	
 	public void addStockToPortfolio(Transaction t)
@@ -14,7 +14,7 @@ public class Portfolio {
 		portfolio.add(t);
 	}
 	
-	public void printPortfolio(ArrayList<Investor> list, ArrayList<Transaction> portfolio)
+	public static void printPortfolio(ArrayList<Investor> list)
 	{
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(Investor a : list)
