@@ -28,7 +28,7 @@ public class mainMarket {
 				Transaction t = new Transaction();
 				t.symbolName = x.getSymbol();
 				t.stockPrice = x.getPrice();
-				int n = r.nextInt(10000) + 1;
+				int n = r.nextInt(5000) + 1;
 				t.numberBought = n;
 				t.agentID = a.getAgentID();
 				double budgetCheck = (a.getBudget() - (n*t.stockPrice));
