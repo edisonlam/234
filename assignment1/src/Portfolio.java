@@ -6,7 +6,7 @@ public class Portfolio {
 
 	public Portfolio() 
 	{
-		printPortfolio();
+		
 	}
 	
 	public void addStockToPortfolio(Transaction t)
@@ -14,15 +14,22 @@ public class Portfolio {
 		portfolio.add(t);
 	}
 	
-	public void printPortfolio()
+	public void printPortfolio(ArrayList<Investor> list, ArrayList<Transaction> portfolio)
 	{
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
-		for(Transaction t : portfolio)
+		for(Investor a : list)
 		{
-			System.out.println("Agent ID: " + t.agentID);
-			System.out.println("Stock Symbol: " + t.symbolName() + 
-					", Price Per Share: "+ defaultFormat.format(t.stockPrice()) +
-					", Amount Purchased: " + t.numberBought());
+			String x = a.getAgentID();
+			System.out.println("Agent ID: " + a.getAgentID());
+			for(Transaction t : portfolio)
+			{	
+				if(t.agentID.equalsIgnoreCase(x))
+				{
+					System.out.println("Stock Symbol: " + t.symbolName() + 
+							", Price Per Share: "+ defaultFormat.format(t.stockPrice()) +
+							", Amount Purchased: " + t.numberBought());
+				}
+			}
 			System.out.println("");
 		}
 	}

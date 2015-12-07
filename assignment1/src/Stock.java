@@ -18,8 +18,6 @@ public class Stock {
 		
 		int l = setRandomIPOQTY();
 		setIpoQty(l);
-		
-		printHistory();
 	}
 	
 	public void addPriceHistory(History h)
@@ -32,10 +30,15 @@ public class Stock {
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(History h : history)
 		{
+			String x = h.symbolName;
 			System.out.println("Stock Symbol: " + h.symbolName());
-			System.out.println("Price Per Share: "+ defaultFormat.format(h.salePrice()) +
-					", Amount Sold: " + h.lastSaleVolume() +
-					", Price Increased By: " + defaultFormat.format((h.salePrice() - h.newPrice()) * -1));
+			for(History j : history)
+			{
+				if(x.equals(h.symbolName))
+					System.out.println("Price Per Share: "+ defaultFormat.format(j.salePrice()) +
+							", Amount Sold: " + j.lastSaleVolume() +
+							", Price Increased By: " + defaultFormat.format((j.salePrice() - j.newPrice()) * -1));
+			}
 			System.out.println("");
 		}
 	}

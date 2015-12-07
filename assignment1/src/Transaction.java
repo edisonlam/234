@@ -25,4 +25,8 @@ public class Transaction {
 	public int numberBought() {
 		return numberBought;
 	}
+	
+	public String agentID() {
+		return agentID;
+	}
 }

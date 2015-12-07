@@ -8,13 +8,15 @@ public class mainMarket {
 		Market m = new Market();
 		
 		Agent a = new Agent();
+		
+		Portfolio p = new Portfolio();
 
-		Stock s = initializeAllTransactions(m.getIndex(), a.getList());
+		Stock s = initializeAllTransactions(m.getIndex(), a.getList(), p.getPortfolio());
 		
 //		Stock s = searchForStockWithString(m.getIndex());
 	}
 	
-	private static Stock initializeAllTransactions(ArrayList<Stock> index, ArrayList<Investor> list) 
+	private static Stock initializeAllTransactions(ArrayList<Stock> index, ArrayList<Investor> list, ArrayList<Transaction> portfolio) 
 	{
 		Random r = new Random();
 		for(Investor a : list)
@@ -50,7 +52,7 @@ public class mainMarket {
 //				x.printHistory();
 			}
 			while(a.getBudget() >= 1000);
-			p.printPortfolio();
+			p.printPortfolio(list, portfolio);
 		}
 		return null;
 	}
