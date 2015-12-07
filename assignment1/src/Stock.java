@@ -32,10 +32,11 @@ public class Stock {
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(History h : history)
 		{
-			System.out.println("Stock Symbol: " + h.symbolName() + 
-					", Price Per Share: "+ defaultFormat.format(h.salePrice()) +
+			System.out.println("Stock Symbol: " + h.symbolName());
+			System.out.println("Price Per Share: "+ defaultFormat.format(h.salePrice()) +
 					", Amount Sold: " + h.lastSaleVolume() +
 					", Price Increased By: " + defaultFormat.format((h.salePrice() - h.newPrice()) * -1));
+			System.out.println("");
 		}
 	}
 	

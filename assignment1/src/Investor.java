@@ -16,14 +16,14 @@ public class Investor {
 		for(int i = 0; i <=5; i++)
 		{
 			Random r = new Random();
-			int l = r.nextInt(26) + 1;
+			int l = r.nextInt(10) + 1;
 			agentID = agentID + generateLetter(l);
 		}
 	}
 
 	private double setUpRandomBudget() {
 		Random r = new Random();
-		double budget = r.nextDouble() * 1000.00;
+		double budget = r.nextDouble() * 100000.00;
 		return budget;
 	}
 	
@@ -33,107 +33,43 @@ public class Investor {
 		String l = "";
 		if(n == 1)
 		{
-			l = "A";
+			l = "0";
 		}
 		else if(n == 2)
 		{
-			l = "B";
+			l = "1";
 		}
 		else if(n == 3)
 		{
-			l = "C";
+			l = "2";
 		}
 		else if(n == 4)
 		{
-			l = "D";
+			l = "3";
 		}
 		else if(n == 5)
 		{
-			l = "E";
+			l = "4";
 		}
 		else if(n == 6)
 		{
-			l = "F";
+			l = "5";
 		}
 		else if(n == 7)
 		{
-			l = "G";
+			l = "6";
 		}
 		else if(n == 8)
 		{
-			l = "H";
+			l = "7";
 		}
 		else if(n == 9)
 		{
-			l = "I";
+			l = "8";
 		}
 		else if(n == 10)
 		{
-			l = "J";
-		}
-		else if(n == 11)
-		{
-			l = "K";
-		}
-		else if(n == 12)
-		{
-			l = "L";
-		}
-		else if(n == 13)
-		{
-			l = "M";
-		}
-		else if(n == 14)
-		{
-			l = "N";
-		}
-		else if(n == 15)
-		{
-			l = "O";
-		}
-		else if(n == 16)
-		{
-			l = "P";
-		}
-		else if(n == 17)
-		{
-			l = "Q";
-		}
-		else if(n == 18)
-		{
-			l = "R";
-		}
-		else if(n == 19)
-		{
-			l = "S";
-		}
-		else if(n == 20)
-		{
-			l = "T";
-		}
-		else if(n == 21)
-		{
-			l = "U";
-		}
-		else if(n == 22)
-		{
-			l = "V";
-		}
-		else if(n == 23)
-		{
-			l = "W";
-		}
-		else if(n == 24)
-		{
-			l = "X";
-		}
-		else if(n == 25)
-		{
-			l = "Y";
-		}
-		else if(n == 26)
-		{
-			l = "Z";
+			l = "9";
 		}
 		return l;
 	}

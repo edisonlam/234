@@ -34,7 +34,7 @@ public class Agent {
 
 	private void initializeAllInvestorInSimulation() 
 	{
-		for(int i = 0 ; i <= 10000; i++)
+		for(int i = 0 ; i <= 100000; i++)
 		{
 			Investor a = new Investor();
 			list.add(a);

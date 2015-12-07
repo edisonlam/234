@@ -49,7 +49,7 @@ public class mainMarket {
 				}
 //				x.printHistory();
 			}
-			while(a.getBudget() >= 10);
+			while(a.getBudget() >= 1000);
 			p.printPortfolio();
 		}
 		return null;
