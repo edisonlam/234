@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Agent {
 
-	private ArrayList<Investor> list = new ArrayList<Investor>();
+	private static ArrayList<Investor> list = new ArrayList<Investor>();
 	
 	public void addAnInvestorToTheList(Investor investor)
 	{
@@ -15,14 +15,14 @@ public class Agent {
 //		printTheList();
 	}
 	
-//	public void printTheList()
-//	{
-//		for(Investor a : list)
-//		{
-//			System.out.println("Agent ID: " + a.getAgentID() + 
-//					", Budget: "+ a.getBudget());
-//		}
-//	}
+	public static void printTheList()
+	{
+		for(Investor a : list)
+		{
+			System.out.println("Agent ID: " + a.getAgentID() + 
+					", Budget: "+ a.getBudget());
+		}
+	}
 	
 	public ArrayList<Investor> getList() {
 		return list;

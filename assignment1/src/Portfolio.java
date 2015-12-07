@@ -14,7 +14,7 @@ public class Portfolio {
 		portfolio.add(t);
 	}
 	
-	public static void printPortfolio(ArrayList<Investor> list)
+	public static void printPortfolio(ArrayList<Investor> list, ArrayList<Stock> index)
 	{
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(Investor a : list)
@@ -25,6 +25,7 @@ public class Portfolio {
 			{	
 				if(t.agentID.equalsIgnoreCase(x))
 				{
+					
 					System.out.println("Stock Symbol: " + t.symbolName() + 
 							", Price Per Share: "+ defaultFormat.format(t.stockPrice()) +
 							", Amount Purchased: " + t.numberBought());

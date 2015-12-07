@@ -55,7 +55,7 @@ public class Stock {
 	private int setRandomIPOQTY() 
 	{
 		Random r = new Random();
-		int l = r.nextInt() / 100;
+		int l = r.nextInt() / 1000;
 		if (l < 0)
 		{
 			l = l * -1;

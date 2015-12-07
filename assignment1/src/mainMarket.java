@@ -28,7 +28,7 @@ public class mainMarket {
 				Transaction t = new Transaction();
 				t.symbolName = x.getSymbol();
 				t.stockPrice = x.getPrice();
-				int n = r.nextInt(5000) + 1;
+				int n = r.nextInt(10000) + 1;
 				t.numberBought = n;
 				t.agentID = a.getAgentID();
 				double budgetCheck = (a.getBudget() - (n*t.stockPrice));
@@ -37,7 +37,7 @@ public class mainMarket {
 				{
 					continue;
 				}
-				else if(qtyCheck <=0)
+				else if(qtyCheck <0)
 				{
 					continue;
 				}
@@ -58,21 +58,36 @@ public class mainMarket {
 			}
 			while(a.getBudget() >= 5000);
 		}
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Would you like to print the -Portfolio- or the -History-?");
-		String a = sc.next();
-		if(a.equalsIgnoreCase("Portfolio"))
+		String b = "";
+		do
 		{
-			Portfolio.printPortfolio(list);
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Would you like to print the -Index-, -Agents-, -Portfolio-, or -History-?");
+			String a = sc.next();
+			if(a.equalsIgnoreCase("Index"))
+			{
+				Market.printTheIndex();
+			}
+			else if(a.equalsIgnoreCase("Agents"))
+			{
+				Agent.printTheList();
+			}
+			else if(a.equalsIgnoreCase("Portfolio"))
+			{
+				Portfolio.printPortfolio(list, index);
+			}
+			else if(a.equalsIgnoreCase("History"))
+			{
+				Stock.printHistory(index);
+			}
+			else
+			{
+				System.out.println("Goodbye");
+			}
+			System.out.println("Would you like to go back to the beginning?");
+			b = sc.next();
 		}
-		else if(a.equalsIgnoreCase("History"))
-		{
-			Stock.printHistory(index);
-		}
-		else
-		{
-			System.out.println("Goodbye");
-		}
+		while (b.equalsIgnoreCase("yes"));
 		return null;
 	}
 }
