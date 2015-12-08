@@ -29,12 +29,12 @@ public class Agent {
 	}
 	
 	public void setList(ArrayList<Investor> list) {
-		this.list = list;
+		Agent.list = list;
 	}
 
 	private void initializeAllInvestorInSimulation() 
 	{
-		for(int i = 0 ; i <= 1000000; i++)
+		for(int i = 0 ; i <= 12000; i++)
 		{
 			Investor a = new Investor();
 			list.add(a);

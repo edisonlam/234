@@ -14,7 +14,7 @@ public class Portfolio {
 		portfolio.add(t);
 	}
 	
-	public static void printPortfolio(ArrayList<Investor> list, ArrayList<Stock> index)
+	public static void printPortfolio(ArrayList<Investor> list)
 	{
 		NumberFormat defaultFormat = NumberFormat.getCurrencyInstance();
 		for(Investor a : list)
@@ -40,6 +40,6 @@ public class Portfolio {
 	}
 	
 	public void setPortfolio(ArrayList<Transaction> portfolio) {
-		this.portfolio = portfolio;
+		Portfolio.portfolio = portfolio;
 	}
 }

@@ -1,4 +1,3 @@
-
 public class History {
 	
 	public String symbolName;

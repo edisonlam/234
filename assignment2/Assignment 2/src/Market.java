@@ -24,7 +24,7 @@ public class Market {
 	}
 
 	public void setIndex(ArrayList<Stock> index) {
-		this.index = index;
+		Market.index = index;
 	}
 
 	public Market() 

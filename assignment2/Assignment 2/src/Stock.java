@@ -49,7 +49,7 @@ public class Stock {
 	}
 	
 	public void setHistory(ArrayList<History> history) {
-		this.history = history;
+		Stock.history = history;
 	}
 
 	private int setRandomIPOQTY() 
